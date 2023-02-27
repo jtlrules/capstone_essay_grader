@@ -1,3 +1,7 @@
+# Keras, Tensorflow
+# Gensim - Words as semantic vectors - pip install --upgrade gensim
+from gensim import corpora, models, similarities, downloader, word2vec
+
 # One-hot representation
 #Taken from https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/
 from numpy import argmax

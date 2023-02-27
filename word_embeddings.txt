@@ -1,0 +1,17 @@
+Custom vs Pre-built sets of word embeddings
+
+Custom
+	Word2Vec - Gensim
+	Custom set of word embeddings requires significant effort but gives maximum flexibiliy.
+	Often useful when your problem scenario involves specialized vocab and terms. ie Current - ocean or electric
+
+Pre-Built
+	Open source projects:
+	GloVe (global vectors for word representation)
+		.txt file
+		6 billion words - 100 dimension vector - 400k distinct words - 350 MB
+	ELMo (embeddings from language models)
+
+
+Neural Net
+	Keras wrapper library over the TensorFlow neural code library
