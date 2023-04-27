@@ -29,3 +29,9 @@ print("The maximum number of words in any document is : ", maxlen)
 # 2. Each sentence has a list of words which we will one_hot encode (one_hot function)
 # 3. Each sentence have different # of words. Pad
 # 4. 
+
+# Keras doc Embedding layer:
+# https://keras.io/api/layers/core_layers/embedding/
+
+# Keras TextVectorization layer:
+# https://keras.io/api/layers/preprocessing_layers/text/text_vectorization/#textvectorization-class
