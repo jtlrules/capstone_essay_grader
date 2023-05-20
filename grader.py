@@ -5,7 +5,6 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.layers import Embedding, Dense, Bidirectional, LSTM, Dropout
 from tensorflow.keras.optimizers import Adam
 
 # Load data
@@ -57,15 +56,8 @@ X_train, X_test, y_train, y_test = train_test_split(essay_vectors, y, test_size=
 
 # Create model
 model = keras.Sequential()
-#model.add(Bidirectional(LSTM(64, return_sequences=True, input_shape=(embedding_dim,))))
-#model.add(layers.Dropout(0.5))
 model.add(layers.Dense(embedding_dim, activation='relu', input_shape=(embedding_dim,)))
 model.add(layers.Dropout(0.5))
-#model.add(layers.Dense(128, activation='relu', input_shape=(embedding_dim,)))
-#model.add(layers.Dropout(0.5))
-#model.add(layers.Dense(64, activation='relu'))
-#model.add(layers.Dropout(0.5))
-#model.add(Bidirectional(LSTM(32)))
 model.add(layers.Dense(1, activation='sigmoid'))
 
 # Compile model

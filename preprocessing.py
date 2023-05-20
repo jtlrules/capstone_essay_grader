@@ -1,5 +1,4 @@
 ### Read in CSV files
-
 import pandas
 
 trainingSet = pandas.read_csv('Raw data/training_set_rel3.tsv', sep='\t', encoding='iso8859_15')
@@ -103,7 +102,6 @@ from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import re
-import functools
 
 nltk.download('stopwords')
 

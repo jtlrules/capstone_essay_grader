@@ -5,13 +5,6 @@ import tensorflow
 
 data = pandas.read_csv('data.csv', sep=',', encoding='iso8859_15')
 
-
-from sklearn.feature_extraction.text import CountVectorizer
-
-# Convert essay column to numerical representations
-#vectorizer = CountVectorizer()
-#essay_data = vectorizer.fit_transform(data['essay'])
-
 # Create a vocabulary
 from tensorflow.keras.preprocessing.text import one_hot
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -26,9 +19,7 @@ padded_docs = pad_sequences(encoded_docs, maxlen=max_length, padding='post')
 # Define target
 import numpy
 target = data['score'].values
-
 target = numpy.reshape(target, (target.shape[0], 1))
-#exit(1)
 
 # Create sparse matrix
 sp = tensorflow.sparse.SparseTensor(indices=np.array(padded_docs.nonzero()).T, 
@@ -41,24 +32,19 @@ sp_reordered = tensorflow.sparse.reorder(sp)
 ### Split data into training and testing sets
 from sklearn.model_selection import train_test_split
 
-# Split data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(essay_data, target, test_size=0.2)
-
-
 
 
 ### Define neural network architecture
 from keras.models import Sequential
 from keras.layers import Dense
 
-# Define neural network architecture
 model = Sequential()
 model.add(Dense(64, input_dim=essay_data.shape[1], activation='relu'))
 model.add(Dense(32, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 
 ### Compile the neural network
-# Compile neural network
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 ### Train the neural network
@@ -74,7 +60,6 @@ X_train.sort_indices()
 model.fit(X_train, y_train, epochs=10, batch_size=32)
 
 ### Evaluate the neural network
-# Evaluate neural network
 score = model.evaluate(X_test, y_test, batch_size=32)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])

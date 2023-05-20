@@ -60,27 +60,10 @@ test_target = test_data['score'].values
 train_target = np.reshape(train_target, (train_target.shape[0], 1))
 test_target = np.reshape(test_target, (test_target.shape[0], 1))
 
-#target = np.reshape(target, (target.shape[0], 1))
-#exit(1)
-
-# Create sparse matrix
-#train_sp = tf.sparse.SparseTensor(indices=np.array(train_padded_docs.nonzero()).T, 
-#                                  values=train_padded_docs[train_padded_docs.nonzero()],
-#                                  dense_shape=train_padded_docs.shape)
-#test_sp = tf.sparse.SparseTensor(indices=np.array(test_padded_docs.nonzero()).T, 
-#                                 values=test_padded_docs[test_padded_docs.nonzero()],
-#                                 dense_shape=test_padded_docs.shape)
-
-# Reorder the sparse matrix
-#train_sp_reordered = tf.sparse.reorder(train_sp)
-#test_sp_reordered = tf.sparse.reorder(test_sp)
-
-
 ### Define neural network architecture
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, LSTM
 
-# Define neural network architecture
 model = Sequential()
 model.add(tf.keras.layers.Embedding(num_words, 200, weights=[embedding_matrix], input_length=max_length, trainable=False))
 #model.add(LSTM(100))
@@ -97,7 +80,7 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['mse', 'accuracy'])
 
 ### Train the neural network
-from sklearn.utils import shuffle
+#from sklearn.utils import shuffle
 
 # Shuffle the training data
 #X_train, y_train = shuffle(X_train, y_train, random_state=0)
@@ -105,11 +88,9 @@ from sklearn.utils import shuffle
 # Sort the indices of the sparse matrix
 #X_train.sort_indices()
 
-# Train the model
 model.fit(train_padded, train_target, epochs=10, batch_size=32)
 
 ### Evaluate the neural network
-# Evaluate neural network
 score = model.evaluate(test_padded, test_target, batch_size=32)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])

@@ -5,8 +5,6 @@ import pandas as pd
 trainingSet = pd.read_csv('Raw data/training_set_rel3.tsv', sep='\t', encoding='iso8859_15')
 validSet = pd.read_csv('Raw data/valid_set.tsv', sep='\t', encoding='iso8859_15')
 valid_sample_submission = pd.read_csv('Raw data/valid_sample_submission_5_column.csv', sep=',', encoding='iso8859_15')
-
-exit(1)
 ### Preprocess
 
 trainingSet = trainingSet[["essay_id", "essay_set", "essay", "domain1_score", "domain2_score"]]
