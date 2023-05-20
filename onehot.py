@@ -76,7 +76,6 @@ model.add(Dropout(0.3))
 model.add(Dense(1, activation='sigmoid'))
 
 ### Compile the neural network
-# Compile neural network
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['mse', 'accuracy'])
 
 ### Train the neural network
