@@ -1,3 +1,5 @@
+# Grading Essays With Machine Learning by Josh Little
+
 Different files in the repo are simply different versions of the program.
 
 The final iteration is grader.py.
